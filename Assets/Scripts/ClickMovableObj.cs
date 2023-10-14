@@ -49,6 +49,9 @@ public class ClickMovableObj : MonoBehaviour
                 mouseUpPosy - mouseDownPosy <= 0.1f && mouseUpPosy - mouseDownPosy >= -0.1f)
             {
                 Debug.Log("click");
+
+                FanctionList();
+
             }
         }
     }

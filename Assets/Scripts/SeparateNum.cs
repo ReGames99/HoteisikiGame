@@ -18,7 +18,7 @@ public class SeparateNum : MonoBehaviour
     {
         Instantiate((GameObject)Resources.Load("x"), new Vector3(gameObject.transform.position.x + 0.8f, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity, gameObject.transform.parent);
         numcir = Instantiate((GameObject)Resources.Load("numcir"), new Vector3(gameObject.transform.position.x - 0.8f, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity, gameObject.transform.parent);
-        Instantiate((GameObject)Resources.Load("X 1"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity, gameObject.transform.parent);
+        numcir.GetComponent<MultiDiv>().symbolX = Instantiate((GameObject)Resources.Load("X 1"), new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity, gameObject.transform.parent);
 
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
         numcir.gameObject.GetComponent<MyNum>().SetMyNumber();

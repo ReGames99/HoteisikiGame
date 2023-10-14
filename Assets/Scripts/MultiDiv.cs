@@ -9,6 +9,7 @@ public class MultiDiv : MonoBehaviour
 
     float equalSymbolPosx;
 
+    public GameObject symbolX;
 
 
     private void Start()
@@ -19,12 +20,14 @@ public class MultiDiv : MonoBehaviour
     void InstantiateBarNum(Vector3 oppsiteBall)
     {
         //•ª”‚Ìü‚ğˆø‚­
-        Instantiate((GameObject)Resources.Load("Bar"), new Vector3(oppsiteBall.x , oppsiteBall.y - 1f, oppsiteBall.z), Quaternion.identity, gameObject.transform.parent);
+        Instantiate((GameObject)Resources.Load("Bar"), new Vector3(oppsiteBall.x , oppsiteBall.y - 0.7f, oppsiteBall.z), Quaternion.identity, gameObject.transform.parent);
 
         //ü‚Ì‰º‚É•ª•ê‚Ì‹…‚ğİ’u
-        GameObject numcir = Instantiate((GameObject)Resources.Load("numcir"), new Vector3(oppsiteBall.x, oppsiteBall.y - 2f, oppsiteBall.z), Quaternion.identity, gameObject.transform.parent);
+        GameObject numcir = Instantiate((GameObject)Resources.Load("numcir"), new Vector3(oppsiteBall.x, oppsiteBall.y - 1.4f, oppsiteBall.z), Quaternion.identity, gameObject.transform.parent);
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
         numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
+
+        Destroy(symbolX);
     }
 
 

@@ -51,15 +51,6 @@ public class ClickMovableObj : MonoBehaviour
                 Debug.Log("click");
 
 
-                //以下クリック時に呼び出したい関数
-
-                if(gameObject.GetComponent<SeparateNum>() != null)
-                {
-                    gameObject.GetComponent<SeparateNum>().SeparateNumberToBalls();
-                }
-
-
-
 
 
 

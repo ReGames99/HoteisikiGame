@@ -27,40 +27,30 @@ public class MultiDiv : MonoBehaviour
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
         numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
 
-        Destroy(symbolX);
+        
     }
 
 
 
-    public void DoMultiDivide()
+    public void DoDivide()
     {
+        //自分自身のXは先に消しておく
+        symbolX.SetActive(false);
+        Destroy(symbolX);
+
         //NumberBall、Symbolタグを持つオブジェクトを配列に格納
         GameObject[] numberBalls = GameObject.FindObjectsOfType<GameObject>()
             .Where(go => go.CompareTag("NumberBall") || go.CompareTag("Symbol"))
             .ToArray();
 
-        //配列の中から反対側のオブジェクトの下にActFraction()を実行
+        //配列の中のオブジェクトの下にActFraction()を実行
         foreach (GameObject obj in numberBalls)
         {
             Vector3 numberBallVec = obj.transform.position;
-            if (gameObject.transform.position.x - equalSymbolPosx < 0)
-            {
-                if (numberBallVec.x > equalSymbolPosx)
-                {
-                    InstantiateBarNum(numberBallVec);
-                    Destroy(gameObject);
-                }
-            }
-            else if (gameObject.transform.position.x - equalSymbolPosx >= 0)
-            {
-                if (numberBallVec.x < equalSymbolPosx)
-                {
-                    InstantiateBarNum(numberBallVec);
-                    Destroy(gameObject);
-                }
-            }
+                           
+            InstantiateBarNum(numberBallVec);
+            Destroy(gameObject);         
         }
     }
-
 
 }

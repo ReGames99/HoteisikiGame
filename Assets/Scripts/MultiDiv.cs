@@ -16,8 +16,12 @@ public class MultiDiv : MonoBehaviour
     public void DoDivide()
     {
         //自分自身のXは先に消しておく
-        symbolX.SetActive(false);
-        Destroy(symbolX);
+        if(symbolX != null)
+        {
+            symbolX.SetActive(false);
+            Destroy(symbolX);
+        }
+        
 
         //NumberBall、Symbolタグを持つオブジェクトを配列に格納
         GameObject[] numberBalls = GameObject.FindObjectsOfType<GameObject>()
@@ -33,6 +37,14 @@ public class MultiDiv : MonoBehaviour
             Destroy(gameObject);         
         }
     }
+
+
+    public void DoMultiply()
+    {
+        //if()
+
+    }
+
 
     void InstantiateBarNum(Vector3 oppsiteBall)
     {

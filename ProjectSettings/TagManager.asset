@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - NumberBall
+  - MulDivBall
+  - Symbol
   layers:
   - Default
   - TransparentFX

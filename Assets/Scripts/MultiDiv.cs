@@ -5,10 +5,6 @@ using System.Linq;
 
 public class MultiDiv : MonoBehaviour
 {
-    bool onMouseFlag = false;
-
-    float equalSymbolPosx;
-
     public GameObject symbolX;
 
 
@@ -38,12 +34,6 @@ public class MultiDiv : MonoBehaviour
         }
     }
 
-
-    public void DoMultiply()
-    {
-        //if()
-
-    }
 
 
     void InstantiateBarNum(Vector3 oppsiteBall)

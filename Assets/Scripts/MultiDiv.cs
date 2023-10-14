@@ -12,25 +12,6 @@ public class MultiDiv : MonoBehaviour
     public GameObject symbolX;
 
 
-    private void Start()
-    {
-        equalSymbolPosx = GameObject.Find("=").transform.position.x;
-    }
-
-    void InstantiateBarNum(Vector3 oppsiteBall)
-    {
-        //•ª”‚Ìü‚ğˆø‚­
-        Instantiate((GameObject)Resources.Load("Bar"), new Vector3(oppsiteBall.x , oppsiteBall.y - 0.7f, oppsiteBall.z), Quaternion.identity, gameObject.transform.parent);
-
-        //ü‚Ì‰º‚É•ª•ê‚Ì‹…‚ğİ’u
-        GameObject numcir = Instantiate((GameObject)Resources.Load("numcir"), new Vector3(oppsiteBall.x, oppsiteBall.y - 1.4f, oppsiteBall.z), Quaternion.identity, gameObject.transform.parent);
-        numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
-        numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
-
-        
-    }
-
-
 
     public void DoDivide()
     {
@@ -51,6 +32,17 @@ public class MultiDiv : MonoBehaviour
             InstantiateBarNum(numberBallVec);
             Destroy(gameObject);         
         }
+    }
+
+    void InstantiateBarNum(Vector3 oppsiteBall)
+    {
+        //•ª”‚Ìü‚ğˆø‚­
+        Instantiate((GameObject)Resources.Load("Bar"), new Vector3(oppsiteBall.x, oppsiteBall.y - 0.7f, oppsiteBall.z), Quaternion.identity, gameObject.transform.parent);
+
+        //ü‚Ì‰º‚É•ª•ê‚Ì‹…‚ğİ’u
+        GameObject numcir = Instantiate((GameObject)Resources.Load("numcir"), new Vector3(oppsiteBall.x, oppsiteBall.y - 1.4f, oppsiteBall.z), Quaternion.identity, gameObject.transform.parent);
+        numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
+        numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
     }
 
 }

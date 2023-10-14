@@ -13,20 +13,8 @@ public class ClickMovableObj : MonoBehaviour
     float mouseUpPosy;
 
 
-    // ’Êí‚ÌList‚Æ‚µ‚Äinspector‚Åˆµ‚¦‚é
-    //[SerializeField] List<SpawnInfo> spawnList = new List<SpawnInfo>();
-    //[SerializeField] List<string> list = new List<string>();
-
     [SerializeField] UnityEvent Event;
 
-
-    //// ©ìclass‚ÍSerializable‚·‚é
-    //[System.Serializable]
-    //public class SpawnInfo
-    //{
-    //    public char scriptName; // Enemy‚ÌPrefab
-    //    public char fuctionName;        // Enemy‚ÌspawnÀ•W
-    //}
 
 
     private void Start()

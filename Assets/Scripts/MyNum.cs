@@ -18,6 +18,8 @@ public class MyNum : MonoBehaviour
         SetMyNumber();   
     }
 
+ 
+
     //オブジェクト名からmyNumと表示される数字を設定
     public void  SetMyNumber()
     {

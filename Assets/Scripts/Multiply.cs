@@ -20,7 +20,8 @@ public class Multiply : MonoBehaviour
             foreach (GameObject obj in muldivBalls)
             {
                 if (obj.transform.parent.Find("Bar(Clone)")?.gameObject != null &&
-                    obj.GetComponent<MyNum>().motherOrChildFlag == false)
+                    obj.GetComponent<MyNum>().motherOrChildFlag == false &&
+                    gameObject.GetComponent<MyNum>().myNum == obj.GetComponent<MyNum>().myNum)
                 {
                     Destroy(obj.transform.parent.Find("Bar(Clone)").gameObject);
                     Destroy(obj);
@@ -52,9 +53,6 @@ public class Multiply : MonoBehaviour
 
             }
         }
-        
-        
-
     }
 
     //分数になっていないものは、掛け算のセットを追加する

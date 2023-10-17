@@ -7,7 +7,6 @@ using System.Linq;
 //X(かける)を取得できたときに関数起動
 public class MultiDiv : MonoBehaviour
 {
-    GameObject fractionParent;
 
     public void DoDivide()
     {
@@ -17,6 +16,7 @@ public class MultiDiv : MonoBehaviour
         {
             //自分自身のXは先に消し、分数の線を生成しないようにする          
             gameObject.transform.parent.Find("X 1(Clone)").gameObject.SetActive(false);
+
 
 
             //NumberBall、Symbolタグを持つオブジェクトを配列に格納
@@ -65,6 +65,28 @@ public class MultiDiv : MonoBehaviour
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
         numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
 
+
+
+
+
+
+
+        for (int i = 0; i < nbandsym.transform.parent.childCount; i++)
+        {
+            GameObject childObject = nbandsym.transform.GetChild(i).gameObject;
+
+            if (childObject.CompareTag("MulDivBall"))
+            {
+                int multiplyNum = childObject.GetComponent<MyNum>().myNum * numcir.GetComponent<MyNum>().myNum;
+
+            }
+        }
+
+    }
+
+    void BottomMultiply(GameObject bottomNum)
+    {
+        
     }
 
 }

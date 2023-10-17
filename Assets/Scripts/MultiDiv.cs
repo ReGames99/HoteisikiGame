@@ -30,6 +30,19 @@ public class MultiDiv : MonoBehaviour
             {
                 InstantiateBarNum(obj); 
             }
+
+            GameObject[] xBalls = GameObject.FindGameObjectsWithTag("xBall");
+            foreach (GameObject obj in xBalls)
+            {
+                
+                if (obj.transform.parent.gameObject != gameObject.transform.parent.gameObject &&
+                    obj.transform.parent.Find("X 1(Clone)").gameObject.activeSelf == false)
+                {
+                    //Debug.Log(obj.transform.parent.Find("X 1(Clone)").gameObject);
+                    InstantiateBarNum(obj);                 
+                }      
+            }
+
             Destroy(gameObject);
 
         }    

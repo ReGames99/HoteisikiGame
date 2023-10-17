@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
+//X(かける)を取得できたときに関数起動
 public class MultiDiv : MonoBehaviour
 {
     public GameObject symbolX;
 
-
+    GameObject fractionParent;
 
     public void DoDivide()
     {
@@ -29,6 +31,9 @@ public class MultiDiv : MonoBehaviour
                 Vector3 numberBallVec = obj.transform.position;
 
                 InstantiateBarNum(numberBallVec);
+
+                obj.transform.parent = fractionParent.transform;
+
                 Destroy(gameObject);
             }
         }    
@@ -36,18 +41,23 @@ public class MultiDiv : MonoBehaviour
 
 
 
-    void InstantiateBarNum(Vector3 oppsiteBall)
+    void InstantiateBarNum(Vector3 nbandsym)
     {
+        //分数セットの親オブジェクトを生成
+        fractionParent = Instantiate((GameObject)Resources.Load("fraction parent"), new Vector3(nbandsym.x, nbandsym.y - 0.7f, nbandsym.z), Quaternion.identity, gameObject.transform.parent);
+
         //分数の線を引く
-        GameObject bar = Instantiate((GameObject)Resources.Load("Bar"), new Vector3(oppsiteBall.x, oppsiteBall.y - 0.7f, oppsiteBall.z), Quaternion.identity, gameObject.transform.parent);
+        GameObject bar = Instantiate((GameObject)Resources.Load("Bar"), new Vector3(nbandsym.x, nbandsym.y - 0.7f, nbandsym.z), Quaternion.identity, fractionParent.transform);
 
         //線の下に分母の球を設置
-        GameObject numcir = Instantiate((GameObject)Resources.Load("numcir"), new Vector3(oppsiteBall.x, oppsiteBall.y - 1.4f, oppsiteBall.z), Quaternion.identity, gameObject.transform.parent);
+        GameObject numcir = Instantiate((GameObject)Resources.Load("numcir"), new Vector3(nbandsym.x, nbandsym.y - 1.4f, nbandsym.z), Quaternion.identity, fractionParent.transform);
+        numcir.transform.localScale = new Vector3(0.5f, 0.5f, 0);
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
         numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
 
-        //線を球の子オブジェクトにする
-        bar.transform.parent = numcir.transform;
+
+        //Barが存在するなら、
+
     }
 
 }

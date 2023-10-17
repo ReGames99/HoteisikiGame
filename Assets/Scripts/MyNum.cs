@@ -12,6 +12,9 @@ public class MyNum : MonoBehaviour
 
     public string variable;
 
+    //true‚ª•ªŽq
+    [SerializeField] public bool motherOrChildFlag;
+
 
     private void Start()
     {

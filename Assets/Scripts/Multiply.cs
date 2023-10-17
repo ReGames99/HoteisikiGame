@@ -9,27 +9,29 @@ public class Multiply : MonoBehaviour
 
     public void DoMultiply()
     {
+        //もしタップしたnumcirが分数の形になっていれば
         if (gameObject.transform.parent.Find("Bar(Clone)")?.gameObject != null)
         {
-            Debug.Log("起動！");
-
             //MulDivBallタグを持つオブジェクトを配列に格納
             GameObject[] muldivBalls = GameObject.FindGameObjectsWithTag("MulDivBall");
 
-            //配列の中のオブジェクトを削除
+            //配列の中のオブジェクトが分母であれば削除
             foreach (GameObject obj in muldivBalls)
             {
-                if (obj.transform.Find("Bar(Clone)")?.gameObject != null)
+                if (obj.transform.parent.Find("Bar(Clone)")?.gameObject != null　&&
+                    obj.GetComponent<MyNum>().motherOrChildFlag == false)
                 {
+                    Destroy(obj.transform.parent.Find("Bar(Clone)").gameObject);
                     Destroy(obj);
+                    
                 }              
             }
 
 
-            //MulDivBallタグを持つオブジェクトを配列に格納
+            //xBallタグを持つオブジェクトを配列に格納
             GameObject[] xBalls = GameObject.FindGameObjectsWithTag("xBall");
 
-            //配列の中のオブジェクトにActFraction()を実行
+            //配列の中のオブジェクトに掛け算セットを追加
             foreach (GameObject obj in xBalls)
             {
                 InstantiateMultiplySet(obj);
@@ -41,16 +43,20 @@ public class Multiply : MonoBehaviour
 
     }
 
+    //分数になっていないものは、掛け算のセットを追加する
     void InstantiateMultiplySet(GameObject xBall)
     {
-        //分数セットを分解
+        GameObject numcir = Instantiate((GameObject)Resources.Load("numcir"), new Vector3(xBall.transform.position.x - 1.6f, xBall.transform.position.y, xBall.transform.position.z), Quaternion.identity, xBall.transform.parent);
+        xBall.transform.parent.Find("X 1(Clone)").gameObject.SetActive(true);
 
+        numcir.GetComponent<MyNum>().motherOrChildFlag = true;
+        numcir.transform.localScale = new Vector3(0.5f, 0.5f, 0);
+        
 
-
-        GameObject numcir = Instantiate((GameObject)Resources.Load("numcir"), new Vector3(xBall.transform.position.x - 1.6f, xBall.transform.position.y, xBall.transform.position.z), Quaternion.identity, gameObject.transform.parent);
-        numcir.GetComponent<MultiDiv>().symbolX = Instantiate((GameObject)Resources.Load("X 1"), new Vector3(xBall.transform.position.x - 0.8f, xBall.transform.position.y, xBall.transform.position.z), Quaternion.identity, gameObject.transform.parent);       
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
         numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
+
+
     }
 
 }

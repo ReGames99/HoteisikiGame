@@ -11,25 +11,27 @@ public class MultiDiv : MonoBehaviour
 
     public void DoDivide()
     {
-        if(gameObject.transform.parent.Find("X 1(Clone)")?.gameObject != null)
+        if(gameObject.transform.parent.Find("X 1(Clone)")?.gameObject != null &&
+            gameObject.GetComponent<MyNum>().motherOrChildFlag == true)
         {
             //自分自身のXは先に消し、分数の線を生成しないようにする          
             gameObject.transform.parent.Find("X 1(Clone)").gameObject.SetActive(false);
-            //Destroy(symbolX);
 
 
             //NumberBall、Symbolタグを持つオブジェクトを配列に格納
-            GameObject[] numberBalls = GameObject.FindObjectsOfType<GameObject>()
-                .Where(go => go.CompareTag("NumberBall") || go.CompareTag("Symbol"))
-                .ToArray();
-
-            //配列の中のオブジェクトの下にActFraction()を実行
+            GameObject[] numberBalls = GameObject.FindGameObjectsWithTag("NumberBall");
             foreach (GameObject obj in numberBalls)
             {
                 InstantiateBarNum(obj);
-
-                Destroy(gameObject);
             }
+
+            GameObject[] Symbols = GameObject.FindGameObjectsWithTag("Symbol");
+            foreach (GameObject obj in Symbols)
+            {
+                InstantiateBarNum(obj); 
+            }
+            Destroy(gameObject);
+
         }    
     }
 

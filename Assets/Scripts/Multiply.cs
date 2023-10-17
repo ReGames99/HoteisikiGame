@@ -10,7 +10,8 @@ public class Multiply : MonoBehaviour
     public void DoMultiply()
     {
         //もしタップしたnumcirが分数の形になっていれば
-        if (gameObject.transform.parent.Find("Bar(Clone)")?.gameObject != null)
+        if (gameObject.transform.parent.Find("Bar(Clone)")?.gameObject != null &&
+            gameObject.GetComponent<MyNum>().motherOrChildFlag == false)
         {
             //MulDivBallタグを持つオブジェクトを配列に格納
             GameObject[] muldivBalls = GameObject.FindGameObjectsWithTag("MulDivBall");
@@ -18,8 +19,7 @@ public class Multiply : MonoBehaviour
             //配列の中のオブジェクトが分母であれば削除
             foreach (GameObject obj in muldivBalls)
             {
-                if (obj.transform.parent.Find("Bar(Clone)")?.gameObject != null　&&
-                    obj.GetComponent<MyNum>().motherOrChildFlag == false)
+                if (obj.transform.parent.Find("Bar(Clone)")?.gameObject != null)
                 {
                     Destroy(obj.transform.parent.Find("Bar(Clone)").gameObject);
                     Destroy(obj);
@@ -28,13 +28,26 @@ public class Multiply : MonoBehaviour
             }
 
 
+            //muldivBallsの親を取得
+            GameObject[] muldivParents = new GameObject[muldivBalls.Length];
+            for (int i = 0; i < muldivBalls.Length; i++)
+            {
+                muldivParents[i] = muldivBalls[i].transform.parent.gameObject;
+            }
+
+
             //xBallタグを持つオブジェクトを配列に格納
             GameObject[] xBalls = GameObject.FindGameObjectsWithTag("xBall");
 
-            //配列の中のオブジェクトに掛け算セットを追加
+            //分母を削除した分数以外の項に掛け算セットを追加
             foreach (GameObject obj in xBalls)
             {
-                InstantiateMultiplySet(obj);
+                if(muldivParents.Contains(obj.transform.parent.gameObject) == false)
+                {
+                    InstantiateMultiplySet(obj);
+                }
+                
+                
 
             }
         }

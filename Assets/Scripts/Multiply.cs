@@ -9,17 +9,18 @@ public class Multiply : MonoBehaviour
 
     public void DoMultiply()
     {
-        //もしタップしたnumcirが分数の形になっていれば
+        //もしタップしたnumcirが分数の形になっていてかつ、分母の球なら
         if (gameObject.transform.parent.Find("Bar(Clone)")?.gameObject != null &&
             gameObject.GetComponent<MyNum>().motherOrChildFlag == false)
         {
             //MulDivBallタグを持つオブジェクトを配列に格納
             GameObject[] muldivBalls = GameObject.FindGameObjectsWithTag("MulDivBall");
 
-            //配列の中のオブジェクトが分母であれば削除
+            //配列の中のオブジェクトを削除
             foreach (GameObject obj in muldivBalls)
             {
-                if (obj.transform.parent.Find("Bar(Clone)")?.gameObject != null)
+                if (obj.transform.parent.Find("Bar(Clone)")?.gameObject != null &&
+                    obj.GetComponent<MyNum>().motherOrChildFlag == false)
                 {
                     Destroy(obj.transform.parent.Find("Bar(Clone)").gameObject);
                     Destroy(obj);

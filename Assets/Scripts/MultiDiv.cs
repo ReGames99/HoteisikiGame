@@ -11,6 +11,7 @@ public class MultiDiv : MonoBehaviour
 
     public void DoDivide()
     {
+        //分数の形になっていてかつ、球が分子の時
         if(gameObject.transform.parent.Find("X 1(Clone)")?.gameObject != null &&
             gameObject.GetComponent<MyNum>().motherOrChildFlag == true)
         {
@@ -38,7 +39,6 @@ public class MultiDiv : MonoBehaviour
                 if (obj.transform.parent.gameObject != gameObject.transform.parent.gameObject &&
                     obj.transform.parent.Find("X 1(Clone)").gameObject.activeSelf == false)
                 {
-                    //Debug.Log(obj.transform.parent.Find("X 1(Clone)").gameObject);
                     InstantiateBarNum(obj);                 
                 }      
             }

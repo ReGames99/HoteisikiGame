@@ -19,12 +19,30 @@ public class MultiDiv : MonoBehaviour
 
 
 
-            //NumberBall、Symbolタグを持つオブジェクトを配列に格納
+            //foreach(NumberBallを見つける)の中にfor(その子の中からMulDivBallを見つける)が入っている
             GameObject[] numberBalls = GameObject.FindGameObjectsWithTag("NumberBall");
             foreach (GameObject obj in numberBalls)
             {
-                InstantiateBarNum(obj);
+                bool findFlag = false; //見つかっていない
+
+                for (int i = 0; i < obj.transform.parent.childCount; i++)
+                {
+                    GameObject childObject = obj.transform.parent.GetChild(i).gameObject;
+
+                    if (childObject.CompareTag("MulDivBall"))
+                    {
+                        Debug.Log("a");
+                        BottomMultiply(childObject);
+                        findFlag = true;
+                    }
+                }
+
+                if(findFlag == false)
+                {
+                    InstantiateBarNum(obj);
+                }               
             }
+
 
             GameObject[] Symbols = GameObject.FindGameObjectsWithTag("Symbol");
             foreach (GameObject obj in Symbols)
@@ -63,30 +81,15 @@ public class MultiDiv : MonoBehaviour
         numcir.transform.localScale = new Vector3(0.5f, 0.5f, 0);
         
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
-        numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
-
-
-
-
-
-
-
-        for (int i = 0; i < nbandsym.transform.parent.childCount; i++)
-        {
-            GameObject childObject = nbandsym.transform.GetChild(i).gameObject;
-
-            if (childObject.CompareTag("MulDivBall"))
-            {
-                int multiplyNum = childObject.GetComponent<MyNum>().myNum * numcir.GetComponent<MyNum>().myNum;
-
-            }
-        }
+        numcir.gameObject.GetComponent<MyNum>().SetMyNumber();     
 
     }
 
     void BottomMultiply(GameObject bottomNum)
-    {
-        
+    {       
+        int multiplication = bottomNum.GetComponent<MyNum>().myNum * gameObject.GetComponent<MyNum>().myNum;
+        bottomNum.name = multiplication.ToString();
+        bottomNum.GetComponent<MyNum>().SetMyNumber();
     }
 
 }

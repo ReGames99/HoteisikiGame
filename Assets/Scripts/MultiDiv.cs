@@ -31,7 +31,6 @@ public class MultiDiv : MonoBehaviour
 
                     if (childObject.CompareTag("MulDivBall"))
                     {
-                        Debug.Log("a");
                         BottomMultiply(childObject);
                         findFlag = true;
                     }

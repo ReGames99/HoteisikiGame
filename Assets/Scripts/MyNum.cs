@@ -10,7 +10,7 @@ public class MyNum : MonoBehaviour
 
     [SerializeField] public int myNum;
 
-    public string variable;
+    public string variable; //n,x,y
 
     //true‚ª•ªŽq
     [SerializeField] public bool motherOrChildFlag ;

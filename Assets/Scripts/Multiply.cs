@@ -81,7 +81,20 @@ public class Multiply : MonoBehaviour
     void TopMultiply(GameObject topNum)
     {
         int multiplication = topNum.GetComponent<MyNum>().myNum * gameObject.GetComponent<MyNum>().myNum;
-        topNum.name = multiplication.ToString();
+
+        if (topNum.GetComponent<MyNum>().variable == "x")
+        {
+            topNum.name = multiplication.ToString() + "x";
+        }
+        else if (topNum.GetComponent<MyNum>().variable == "y")
+        {
+            topNum.name = multiplication.ToString() + "y";
+        }
+        else if (topNum.GetComponent<MyNum>().variable == "n")
+        {
+            topNum.name = multiplication.ToString();
+        }
+        
         topNum.GetComponent<MyNum>().SetMyNumber();
     }
 }

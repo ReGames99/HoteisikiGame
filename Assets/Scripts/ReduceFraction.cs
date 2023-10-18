@@ -42,18 +42,43 @@ public class ReduceFraction : MonoBehaviour
             {
                 Debug.Log(dividingNum);
                 reducedTopNum = topNum / dividingNum;
-                childObject.GetComponent<MyNum>().name = reducedTopNum.ToString();
+
+                if(childObject.GetComponent<MyNum>().variable == "x")
+                {
+                    childObject.name = reducedTopNum.ToString() + "x";
+                }
+                else if (childObject.GetComponent<MyNum>().variable == "y")
+                {
+                    childObject.name = reducedTopNum.ToString() + "y";
+                }
+                else if (childObject.GetComponent<MyNum>().variable == "n")
+                {
+                    childObject.name = reducedTopNum.ToString();
+                }
+
                 childObject.GetComponent<MyNum>().SetMyNumber();
 
                 integerBall = childObject;
             }
         }
 
+        //ñÒï™ÇµÇƒêÆêîÇ…Ç»ÇÈÇ∆Ç´ÇÃãììÆ
         int divideNum = reducedTopNum / reducedBottomNum;
         if (reducedTopNum % reducedBottomNum == 0)
         {
-            Debug.Log("a");
-            integerBall.GetComponent<MyNum>().name = divideNum.ToString();
+            if (integerBall.GetComponent<MyNum>().variable == "x")
+            {
+                integerBall.name = divideNum.ToString() + "x";
+            }
+            else if (integerBall.GetComponent<MyNum>().variable == "y")
+            {
+                integerBall.name = divideNum.ToString() + "y";
+            }
+            else if (integerBall.GetComponent<MyNum>().variable == "n")
+            {
+                integerBall.name = divideNum.ToString();
+            }
+            
             integerBall.GetComponent<MyNum>().SetMyNumber();
             Destroy(transform.Find("Bar(Clone)").gameObject);
             Destroy(bottomBall);

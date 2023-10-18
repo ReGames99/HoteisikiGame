@@ -12,10 +12,32 @@ public class ReduceFraction : MonoBehaviour
     {
         GetmyNum();
 
-        GCD(bottomNum, topNum);
+        //if(bottomNum == 0 && topNum != 0)
+
+        int dividingNum = GCD(bottomNum, topNum);
 
         //ï™éqï™ïÍÇÃãÖÇç≈ëÂåˆñÒêîÇ≈äÑÇÈ
-        transform.Find()
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            GameObject childObject = transform.GetChild(i).gameObject;
+
+            if (childObject.CompareTag("MulDivBall") &&
+                childObject.GetComponent<MyNum>().motherOrChildFlag == false)
+            {
+                Debug.Log(dividingNum);
+                int num = bottomNum / dividingNum;
+                childObject.GetComponent<MyNum>().name = num.ToString();
+                childObject.GetComponent<MyNum>().SetMyNumber();
+            }
+            if (childObject.CompareTag("NumberBall") &&
+                childObject.GetComponent<MyNum>().motherOrChildFlag == true)
+            {
+                Debug.Log(dividingNum);
+                int num = topNum / dividingNum;
+                childObject.GetComponent<MyNum>().name = num.ToString();
+                childObject.GetComponent<MyNum>().SetMyNumber();
+            }
+        }
     }
 
 
@@ -65,15 +87,21 @@ public class ReduceFraction : MonoBehaviour
             {
                 top = childObject;
             }
-
-
-
+            if (childObject.CompareTag("NumberBall") &&
+                childObject.GetComponent<MyNum>().motherOrChildFlag == true)
+            {
+                top = childObject;
+                Debug.Log(top);
+            }
         }
-
-        if(bottom != null && top != null)
+        
+        if (bottom != null && top != null)
         {
             bottomNum = bottom.GetComponent<MyNum>().myNum;
             topNum = top.GetComponent<MyNum>().myNum;
+            Debug.Log(bottomNum);
+            Debug.Log(topNum);
         }
+
     }
 }

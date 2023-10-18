@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myNum: 0
   variable: 
+  motherOrChildFlag: 1
 --- !u!114 &3516161847905015844
 MonoBehaviour:
   m_ObjectHideFlags: 0

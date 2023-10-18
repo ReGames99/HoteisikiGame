@@ -81,8 +81,10 @@ public class MultiDiv : MonoBehaviour
         numcir.transform.localScale = new Vector3(0.5f, 0.5f, 0);
         
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
-        numcir.gameObject.GetComponent<MyNum>().SetMyNumber();     
+        numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
 
+
+        nbandsym.transform.parent.GetComponent<ReduceFraction>().DoReduce();
     }
 
     //分母の掛け算
@@ -91,6 +93,8 @@ public class MultiDiv : MonoBehaviour
         int multiplication = bottomNum.GetComponent<MyNum>().myNum * gameObject.GetComponent<MyNum>().myNum;
         bottomNum.name = multiplication.ToString();
         bottomNum.GetComponent<MyNum>().SetMyNumber();
+
+        //bottomNum.transform.parent.GetComponent<ReduceFraction>().DoReduce();
     }
 
 }

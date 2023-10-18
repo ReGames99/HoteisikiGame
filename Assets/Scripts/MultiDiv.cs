@@ -93,8 +93,6 @@ public class MultiDiv : MonoBehaviour
         int multiplication = bottomNum.GetComponent<MyNum>().myNum * gameObject.GetComponent<MyNum>().myNum;
         bottomNum.name = multiplication.ToString();
         bottomNum.GetComponent<MyNum>().SetMyNumber();
-
-        //bottomNum.transform.parent.GetComponent<ReduceFraction>().DoReduce();
     }
 
 }

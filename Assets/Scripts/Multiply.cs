@@ -16,7 +16,7 @@ public class Multiply : MonoBehaviour
             //MulDivBallタグを持つオブジェクトを配列に格納
             GameObject[] muldivBalls = GameObject.FindGameObjectsWithTag("MulDivBall");
 
-            //配列の中のオブジェクトを削除
+            //タップしたMulDivBallと同じ球が分母にある、分数の分母と線を削除
             foreach (GameObject obj in muldivBalls)
             {
                 if (obj.transform.parent.Find("Bar(Clone)")?.gameObject != null &&
@@ -41,16 +41,25 @@ public class Multiply : MonoBehaviour
             //xBallタグを持つオブジェクトを配列に格納
             GameObject[] xBalls = GameObject.FindGameObjectsWithTag("xBall");
 
-            //分母を削除した分数以外の項に掛け算セットを追加
+            //分母を削除した分数以外の項(xBall)に掛け算セットを追加
             foreach (GameObject obj in xBalls)
             {
                 if(muldivParents.Contains(obj.transform.parent.gameObject) == false)
                 {
                     InstantiateMultiplySet(obj);
                 }
-                
-                
+            }
 
+            //NumberBallタグを持つオブジェクトを配列に格納
+            GameObject[] numberBalls = GameObject.FindGameObjectsWithTag("NumberBall");
+
+            //分母を削除した分数以外の項(Numberball)に掛け算をする
+            foreach (GameObject obj in numberBalls)
+            {
+                if (muldivParents.Contains(obj.transform.parent.gameObject) == false)
+                {
+                    TopMultiply(obj);
+                }
             }
         }
     }
@@ -67,8 +76,12 @@ public class Multiply : MonoBehaviour
 
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
         numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
-
-
     }
 
+    void TopMultiply(GameObject topNum)
+    {
+        int multiplication = topNum.GetComponent<MyNum>().myNum * gameObject.GetComponent<MyNum>().myNum;
+        topNum.name = multiplication.ToString();
+        topNum.GetComponent<MyNum>().SetMyNumber();
+    }
 }

@@ -7,6 +7,11 @@ public class ReduceFraction : MonoBehaviour
     int bottomNum;
     int topNum;
 
+    GameObject integerBall;
+    GameObject bottomBall;
+    int reducedBottomNum;
+    int reducedTopNum;
+
 
     public void DoReduce()
     {
@@ -25,19 +30,35 @@ public class ReduceFraction : MonoBehaviour
                 childObject.GetComponent<MyNum>().motherOrChildFlag == false)
             {
                 Debug.Log(dividingNum);
-                int num = bottomNum / dividingNum;
-                childObject.GetComponent<MyNum>().name = num.ToString();
+                reducedBottomNum = bottomNum / dividingNum;
+                childObject.GetComponent<MyNum>().name = reducedBottomNum.ToString();
                 childObject.GetComponent<MyNum>().SetMyNumber();
+
+                bottomBall = childObject;
             }
+
             if (childObject.CompareTag("NumberBall") &&
                 childObject.GetComponent<MyNum>().motherOrChildFlag == true)
             {
                 Debug.Log(dividingNum);
-                int num = topNum / dividingNum;
-                childObject.GetComponent<MyNum>().name = num.ToString();
+                reducedTopNum = topNum / dividingNum;
+                childObject.GetComponent<MyNum>().name = reducedTopNum.ToString();
                 childObject.GetComponent<MyNum>().SetMyNumber();
+
+                integerBall = childObject;
             }
         }
+
+        int divideNum = reducedTopNum / reducedBottomNum;
+        if (reducedTopNum % reducedBottomNum == 0)
+        {
+            Debug.Log("a");
+            integerBall.GetComponent<MyNum>().name = divideNum.ToString();
+            integerBall.GetComponent<MyNum>().SetMyNumber();
+            Destroy(transform.Find("Bar(Clone)").gameObject);
+            Destroy(bottomBall);
+        }
+
     }
 
 
@@ -91,7 +112,6 @@ public class ReduceFraction : MonoBehaviour
                 childObject.GetComponent<MyNum>().motherOrChildFlag == true)
             {
                 top = childObject;
-                Debug.Log(top);
             }
         }
         
@@ -99,8 +119,6 @@ public class ReduceFraction : MonoBehaviour
         {
             bottomNum = bottom.GetComponent<MyNum>().myNum;
             topNum = top.GetComponent<MyNum>().myNum;
-            Debug.Log(bottomNum);
-            Debug.Log(topNum);
         }
 
     }

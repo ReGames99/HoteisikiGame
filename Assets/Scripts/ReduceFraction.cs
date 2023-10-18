@@ -37,28 +37,31 @@ public class ReduceFraction : MonoBehaviour
                 bottomBall = childObject;
             }
 
-            if (childObject.CompareTag("NumberBall") &&
-                childObject.GetComponent<MyNum>().motherOrChildFlag == true)
+            if (childObject.CompareTag("NumberBall") || childObject.CompareTag("MulDivBall"))
             {
-                Debug.Log(dividingNum);
-                reducedTopNum = topNum / dividingNum;
-
-                if(childObject.GetComponent<MyNum>().variable == "x")
+                if(childObject.GetComponent<MyNum>().motherOrChildFlag == true)
                 {
-                    childObject.name = reducedTopNum.ToString() + "x";
-                }
-                else if (childObject.GetComponent<MyNum>().variable == "y")
-                {
-                    childObject.name = reducedTopNum.ToString() + "y";
-                }
-                else if (childObject.GetComponent<MyNum>().variable == "n")
-                {
-                    childObject.name = reducedTopNum.ToString();
-                }
+                    Debug.Log(dividingNum);
+                    reducedTopNum = topNum / dividingNum;
 
-                childObject.GetComponent<MyNum>().SetMyNumber();
+                    if (childObject.GetComponent<MyNum>().variable == "x")
+                    {
+                        childObject.name = reducedTopNum.ToString() + "x";
+                    }
+                    else if (childObject.GetComponent<MyNum>().variable == "y")
+                    {
+                        childObject.name = reducedTopNum.ToString() + "y";
+                    }
+                    else if (childObject.GetComponent<MyNum>().variable == "n")
+                    {
+                        childObject.name = reducedTopNum.ToString();
+                    }
 
-                integerBall = childObject;
+                    childObject.GetComponent<MyNum>().SetMyNumber();
+
+                    integerBall = childObject;
+                }
+                
             }
         }
 

@@ -29,7 +29,8 @@ public class MultiDiv : MonoBehaviour
                 {
                     GameObject childObject = obj.transform.parent.GetChild(i).gameObject;
 
-                    if (childObject.CompareTag("MulDivBall"))
+                    if (childObject.CompareTag("MulDivBall") &&
+                        childObject.GetComponent<MyNum>().motherOrChildFlag == false)
                     {
                         BottomMultiply(childObject);
                         findFlag = true;
@@ -84,6 +85,7 @@ public class MultiDiv : MonoBehaviour
 
     }
 
+    //分母の掛け算
     void BottomMultiply(GameObject bottomNum)
     {       
         int multiplication = bottomNum.GetComponent<MyNum>().myNum * gameObject.GetComponent<MyNum>().myNum;

@@ -13,43 +13,13 @@ public class Multiply : MonoBehaviour
         if (gameObject.transform.parent.Find("Bar(Clone)")?.gameObject != null &&
             gameObject.GetComponent<MyNum>().motherOrChildFlag == false)
         {
-            //MulDivBallタグを持つオブジェクトを配列に格納
-            GameObject[] muldivBalls = GameObject.FindGameObjectsWithTag("MulDivBall");
-
-            //タップしたMulDivBallと同じ球が分母にある、分数の分母と線を削除
-            foreach (GameObject obj in muldivBalls)
-            {
-                if (obj.transform.parent.Find("Bar(Clone)")?.gameObject != null &&
-                    obj.GetComponent<MyNum>().motherOrChildFlag == false &&
-                    gameObject.GetComponent<MyNum>().myNum == obj.GetComponent<MyNum>().myNum)
-                {
-                    Destroy(obj.transform.parent.Find("Bar(Clone)").gameObject);
-                    Destroy(obj);
-                    
-                }              
-            }
-
-
-            //muldivBallsの親を取得
-            GameObject[] muldivParents = new GameObject[muldivBalls.Length];
-            for (int i = 0; i < muldivBalls.Length; i++)
-            {
-                muldivParents[i] = muldivBalls[i].transform.parent.gameObject;
-            }
-
-
             //xBallタグを持つオブジェクトを配列に格納
             GameObject[] xBalls = GameObject.FindGameObjectsWithTag("xBall");
 
-            //分母を削除した分数以外の項(xBall)に掛け算セットを追加
+            //項(xBall)に掛け算セットを追加
             foreach (GameObject obj in xBalls)
-            {
-                Debug.Log("a " + obj.transform.parent.gameObject);
-                if(muldivParents.Contains(obj.transform.parent.gameObject) == false)
-                {
-                    Debug.Log("b " + obj.transform.parent.gameObject);
-                    InstantiateMultiplySet(obj);
-                }
+            {          
+                InstantiateMultiplySet(obj);            
             }
 
             //NumberBallタグを持つオブジェクトを配列に格納
@@ -58,13 +28,13 @@ public class Multiply : MonoBehaviour
             //分母を削除した分数以外の項(Numberball)に掛け算をする
             foreach (GameObject obj in numberBalls)
             {
-                if (muldivParents.Contains(obj.transform.parent.gameObject) == false)
-                {
-                    TopMultiply(obj);
-                }
+                TopMultiply(obj);
             }
         }
+
     }
+
+
 
     //分数になっていないものは、掛け算のセットを追加する
     void InstantiateMultiplySet(GameObject xBall)
@@ -76,8 +46,11 @@ public class Multiply : MonoBehaviour
         numcir.transform.localScale = new Vector3(0.5f, 0.5f, 0);
         
 
-        numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
+        numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString(); //DoReduceでも同じ呼び方で不具合
         numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
+
+
+        StartCoroutine(CallDoReduce(numcir));
     }
 
     void TopMultiply(GameObject topNum)
@@ -98,5 +71,18 @@ public class Multiply : MonoBehaviour
         }
         
         topNum.GetComponent<MyNum>().SetMyNumber();
+
+
+        topNum.transform.parent.GetComponent<ReduceFraction>().DoReduce();
     }
+
+
+    private IEnumerator CallDoReduce(GameObject a)
+    {
+        // 3秒間待つ
+        yield return new WaitForSeconds(0.1f);
+
+        a.transform.parent.GetComponent<ReduceFraction>().DoReduce();
+    }
+   
 }

@@ -15,14 +15,17 @@ public class ReduceFraction : MonoBehaviour
 
     public void DoReduce()
     {
+        Debug.Log(gameObject.name + "topNum= " + topNum);
         GetmyNum();
+        Debug.Log(gameObject.name + "topNum= " + topNum);
+        
         
 
         //xBallÇæÇØÇÃÇ∆Ç´ÇÕñÒï™ÇµÇ»Ç¢ÇÊÇ§Ç…Ç∑ÇÈ
         if (bottomNum != 0 && topNum != 0)
         {
             int dividingNum = GCD(bottomNum, topNum);
-
+            Debug.Log(gameObject.name + dividingNum);
 
             //ï™éqï™ïÍÇÃãÖÇç≈ëÂåˆñÒêîÇ≈äÑÇÈ
             for (int i = 0; i < transform.childCount; i++)
@@ -33,7 +36,8 @@ public class ReduceFraction : MonoBehaviour
                     childObject.GetComponent<MyNum>().motherOrChildFlag == false)
                 {
                     reducedBottomNum = bottomNum / dividingNum;
-                    childObject.GetComponent<MyNum>().name = reducedBottomNum.ToString();
+                    Debug.Log(gameObject.name + "reducedBottomNum= " + reducedBottomNum);
+                    childObject.GetComponent<MyNum>().name = reducedBottomNum.ToString(); //Ç±Ç±Ç≈ïsãÔçáèoÇÈÇ©Ç‡
                     childObject.GetComponent<MyNum>().SetMyNumber();
 
                     bottomBall = childObject;
@@ -43,8 +47,9 @@ public class ReduceFraction : MonoBehaviour
                 {
                     if (childObject.GetComponent<MyNum>().motherOrChildFlag == true)
                     {
+                        
                         reducedTopNum = topNum / dividingNum;
-
+                        Debug.Log(gameObject.name + "reducedTopNum= " + reducedTopNum);
                         if (childObject.GetComponent<MyNum>().variable == "x")
                         {
                             childObject.name = reducedTopNum.ToString() + "x";
@@ -144,7 +149,9 @@ public class ReduceFraction : MonoBehaviour
             if (childObject.CompareTag("MulDivBall") &&
                 childObject.GetComponent<MyNum>().motherOrChildFlag == true)
             {
+                
                 top = childObject;
+                Debug.Log(gameObject.name + "top= " + top);
             }
             if (childObject.CompareTag("NumberBall") &&
                 childObject.GetComponent<MyNum>().motherOrChildFlag == true)
@@ -158,6 +165,8 @@ public class ReduceFraction : MonoBehaviour
             bottomNum = bottom.GetComponent<MyNum>().myNum;
             topNum = top.GetComponent<MyNum>().myNum;           
         }
+        Debug.Log(gameObject.name + "bottom= " + bottom);
+        
 
     }
 }

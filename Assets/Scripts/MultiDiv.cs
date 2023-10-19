@@ -29,6 +29,7 @@ public class MultiDiv : MonoBehaviour
                 {
                     GameObject childObject = obj.transform.parent.GetChild(i).gameObject;
 
+                    //分母にMulDivBallがあるとき
                     if (childObject.CompareTag("MulDivBall") &&
                         childObject.GetComponent<MyNum>().motherOrChildFlag == false)
                     {
@@ -50,14 +51,33 @@ public class MultiDiv : MonoBehaviour
                 InstantiateBarNum(obj); 
             }
 
+
             GameObject[] xBalls = GameObject.FindGameObjectsWithTag("xBall");
             foreach (GameObject obj in xBalls)
             {
-                
+                //自分でないかつ、
                 if (obj.transform.parent.gameObject != gameObject.transform.parent.gameObject &&
                     obj.transform.parent.Find("X 1(Clone)").gameObject.activeSelf == false)
                 {
-                    InstantiateBarNum(obj);                 
+                    bool findFlag = false; //見つかっていない
+                    for (int i = 0; i < obj.transform.parent.childCount; i++)
+                    {
+                        GameObject childObject = obj.transform.parent.GetChild(i).gameObject;
+
+                        //分母にMulDivBallがあるとき
+                        if (childObject.CompareTag("MulDivBall") &&
+                            childObject.GetComponent<MyNum>().motherOrChildFlag == false)
+                        {                          
+                            BottomMultiply(childObject);
+                            findFlag = true;
+                            
+                        }
+                    }
+
+                    if (findFlag == false)
+                    {
+                        InstantiateBarNum(obj);
+                    }
                 }      
             }
 
@@ -67,7 +87,7 @@ public class MultiDiv : MonoBehaviour
     }
 
 
-
+    
     void InstantiateBarNum(GameObject nbandsym)
     {
         //分数の線を引く
@@ -83,7 +103,7 @@ public class MultiDiv : MonoBehaviour
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
         numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
 
-
+        
         nbandsym.transform.parent.GetComponent<ReduceFraction>().DoReduce();
     }
 

@@ -44,8 +44,10 @@ public class Multiply : MonoBehaviour
             //分母を削除した分数以外の項(xBall)に掛け算セットを追加
             foreach (GameObject obj in xBalls)
             {
+                Debug.Log("a " + obj.transform.parent.gameObject);
                 if(muldivParents.Contains(obj.transform.parent.gameObject) == false)
                 {
+                    Debug.Log("b " + obj.transform.parent.gameObject);
                     InstantiateMultiplySet(obj);
                 }
             }

@@ -16,76 +16,83 @@ public class ReduceFraction : MonoBehaviour
     public void DoReduce()
     {
         GetmyNum();
+        
 
-        //if(bottomNum == 0 && topNum != 0)
-
-        int dividingNum = GCD(bottomNum, topNum);
-
-        //•ªq•ª•ê‚Ì‹…‚ğÅ‘åŒö–ñ”‚ÅŠ„‚é
-        for (int i = 0; i < transform.childCount; i++)
+        //xBall‚¾‚¯‚Ì‚Æ‚«‚Í–ñ•ª‚µ‚È‚¢‚æ‚¤‚É‚·‚é
+        if (bottomNum != 0 && topNum != 0)
         {
-            GameObject childObject = transform.GetChild(i).gameObject;
+            int dividingNum = GCD(bottomNum, topNum);
 
-            if (childObject.CompareTag("MulDivBall") &&
-                childObject.GetComponent<MyNum>().motherOrChildFlag == false)
+
+            //•ªq•ª•ê‚Ì‹…‚ğÅ‘åŒö–ñ”‚ÅŠ„‚é
+            for (int i = 0; i < transform.childCount; i++)
             {
-                Debug.Log(dividingNum);
-                reducedBottomNum = bottomNum / dividingNum;
-                childObject.GetComponent<MyNum>().name = reducedBottomNum.ToString();
-                childObject.GetComponent<MyNum>().SetMyNumber();
+                GameObject childObject = transform.GetChild(i).gameObject;
 
-                bottomBall = childObject;
-            }
-
-            if (childObject.CompareTag("NumberBall") || childObject.CompareTag("MulDivBall"))
-            {
-                if(childObject.GetComponent<MyNum>().motherOrChildFlag == true)
+                if (childObject.CompareTag("MulDivBall") &&
+                    childObject.GetComponent<MyNum>().motherOrChildFlag == false)
                 {
-                    Debug.Log(dividingNum);
-                    reducedTopNum = topNum / dividingNum;
-
-                    if (childObject.GetComponent<MyNum>().variable == "x")
-                    {
-                        childObject.name = reducedTopNum.ToString() + "x";
-                    }
-                    else if (childObject.GetComponent<MyNum>().variable == "y")
-                    {
-                        childObject.name = reducedTopNum.ToString() + "y";
-                    }
-                    else if (childObject.GetComponent<MyNum>().variable == "n")
-                    {
-                        childObject.name = reducedTopNum.ToString();
-                    }
-
+                    reducedBottomNum = bottomNum / dividingNum;
+                    childObject.GetComponent<MyNum>().name = reducedBottomNum.ToString();
                     childObject.GetComponent<MyNum>().SetMyNumber();
 
-                    integerBall = childObject;
+                    bottomBall = childObject;
                 }
+
+                if (childObject.CompareTag("NumberBall") || childObject.CompareTag("MulDivBall"))
+                {
+                    if (childObject.GetComponent<MyNum>().motherOrChildFlag == true)
+                    {
+                        reducedTopNum = topNum / dividingNum;
+
+                        if (childObject.GetComponent<MyNum>().variable == "x")
+                        {
+                            childObject.name = reducedTopNum.ToString() + "x";
+                        }
+                        else if (childObject.GetComponent<MyNum>().variable == "y")
+                        {
+                            childObject.name = reducedTopNum.ToString() + "y";
+                        }
+                        else if (childObject.GetComponent<MyNum>().variable == "n")
+                        {
+                            childObject.name = reducedTopNum.ToString();
+                        }
+
+                        childObject.GetComponent<MyNum>().SetMyNumber();
+
+                        integerBall = childObject;
+                    }
+
+                }
+
                 
             }
-        }
 
-        //–ñ•ª‚µ‚Ä®”‚É‚È‚é‚Æ‚«‚Ì‹““®
-        int divideNum = reducedTopNum / reducedBottomNum;
-        if (reducedTopNum % reducedBottomNum == 0)
-        {
-            if (integerBall.GetComponent<MyNum>().variable == "x")
+            //–ñ•ª‚µ‚Ä®”‚É‚È‚é‚Æ‚«‚Ì‹““®
+            int divideNum = reducedTopNum / reducedBottomNum;
+            if (reducedTopNum % reducedBottomNum == 0)
             {
-                integerBall.name = divideNum.ToString() + "x";
+                if (integerBall.GetComponent<MyNum>().variable == "x")
+                {
+                    integerBall.name = divideNum.ToString() + "x";
+                }
+                else if (integerBall.GetComponent<MyNum>().variable == "y")
+                {
+                    integerBall.name = divideNum.ToString() + "y";
+                }
+                else if (integerBall.GetComponent<MyNum>().variable == "n")
+                {
+                    integerBall.name = divideNum.ToString();
+                }
+
+                integerBall.GetComponent<MyNum>().SetMyNumber();
+                Destroy(transform.Find("Bar(Clone)").gameObject);
+                Destroy(bottomBall);
             }
-            else if (integerBall.GetComponent<MyNum>().variable == "y")
-            {
-                integerBall.name = divideNum.ToString() + "y";
-            }
-            else if (integerBall.GetComponent<MyNum>().variable == "n")
-            {
-                integerBall.name = divideNum.ToString();
-            }
-            
-            integerBall.GetComponent<MyNum>().SetMyNumber();
-            Destroy(transform.Find("Bar(Clone)").gameObject);
-            Destroy(bottomBall);
+
         }
+        
+        
 
     }
 
@@ -119,6 +126,9 @@ public class ReduceFraction : MonoBehaviour
     //•ªq‚Æ•ª•ê‚ÌmyNum‚ğæ“¾
     void GetmyNum()
     {
+        bottomNum = 0;
+        topNum = 0;
+
         GameObject bottom = null;
         GameObject top = null;
 
@@ -142,11 +152,11 @@ public class ReduceFraction : MonoBehaviour
                 top = childObject;
             }
         }
-        
+
         if (bottom != null && top != null)
         {
             bottomNum = bottom.GetComponent<MyNum>().myNum;
-            topNum = top.GetComponent<MyNum>().myNum;
+            topNum = top.GetComponent<MyNum>().myNum;           
         }
 
     }

@@ -15,13 +15,6 @@ public class ClickMovableObj : MonoBehaviour
 
     [SerializeField] UnityEvent Event;
 
-
-
-    private void Start()
-    {
-        //Debug.Log(list[0]);
-    }
-
     
 
     private void FanctionList()
@@ -48,15 +41,7 @@ public class ClickMovableObj : MonoBehaviour
             if (mouseUpPosx - mouseDownPosx <= 0.1f && mouseUpPosx - mouseDownPosx >= -0.1f &&
                 mouseUpPosy - mouseDownPosy <= 0.1f && mouseUpPosy - mouseDownPosy >= -0.1f)
             {
-                Debug.Log("click");
-
-
-
-
-
-
-
-
+                FanctionList();
             }
         }
     }

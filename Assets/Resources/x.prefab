@@ -231,9 +231,13 @@ GameObject:
   - component: {fileID: 5601092279152784542}
   - component: {fileID: 5601092279152784537}
   - component: {fileID: 6815952531336608129}
+  - component: {fileID: -1768048371904997938}
+  - component: {fileID: -7569444408228735545}
+  - component: {fileID: -7847793858888664433}
+  - component: {fileID: -8816165842854425784}
   m_Layer: 0
   m_Name: x
-  m_TagString: Untagged
+  m_TagString: xBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,3 +308,66 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-1768048371904997938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190148739956056398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9cbfafd88e4d148ac66feffed76cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7569444408228735545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190148739956056398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b446135f0a678b84687c9aed07514f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7847793858888664433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190148739956056398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8ba4b374fe59a419a3b12f0b9b9b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8816165842854425784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190148739956056398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb25452f09c5a94d904b84e13476374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7569444408228735545}
+        m_TargetAssemblyTypeName: BackToNumberBall, Assembly-CSharp
+        m_MethodName: BackNum
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

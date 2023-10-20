@@ -10,13 +10,18 @@ public class MyNum : MonoBehaviour
 
     [SerializeField] public int myNum;
 
-    public string variable;
+    public string variable; //n,x,y
+
+    //trueが分子
+    [SerializeField] public bool motherOrChildFlag ;
 
 
     private void Start()
     {
         SetMyNumber();   
     }
+
+ 
 
     //オブジェクト名からmyNumと表示される数字を設定
     public void  SetMyNumber()

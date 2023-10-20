@@ -54,7 +54,6 @@ public class AddSub : MonoBehaviour
     private void OnMouseUp()
     {
         
-
         if(collisionFlag == true)
         {
             MojiCorrectCheck();
@@ -65,8 +64,20 @@ public class AddSub : MonoBehaviour
                     AddNumber();
                     Destroy(gameObject);
                 }
-                
+                else
+                {
+                    gameObject.GetComponent<ReturnToInitialPos>().ReturnToInitialPosition();
+                }
+
             }
+            else
+            {
+                gameObject.GetComponent<ReturnToInitialPos>().ReturnToInitialPosition();
+            }
+        }
+        else
+        {
+            gameObject.GetComponent<ReturnToInitialPos>().ReturnToInitialPosition();
         }
     }
 

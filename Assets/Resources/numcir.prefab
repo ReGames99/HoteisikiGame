@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: -6364977244992172562}
   - component: {fileID: 3506423653913375603}
   - component: {fileID: 6442967451672524118}
+  - component: {fileID: 5917455568931916943}
   - component: {fileID: -1987573418065465923}
   m_Layer: 0
   m_Name: numcir
@@ -322,6 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myNum: 0
   variable: 
+  motherOrChildFlag: 0
 --- !u!114 &3506423653913375603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9cbfafd88e4d148ac66feffed76cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolX: {fileID: 0}
 --- !u!114 &6442967451672524118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +346,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e0b8e885c6c4904ba58d379f4fd4d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5917455568931916943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190148739956056398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8ba4b374fe59a419a3b12f0b9b9b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &-1987573418065465923

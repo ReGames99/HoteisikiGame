@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2018099418515172759}
   - component: {fileID: 3516161847905015844}
   - component: {fileID: 5411526676918846969}
+  - component: {fileID: -1895615835238489998}
   - component: {fileID: 1681604493132458496}
   m_Layer: 0
   m_Name: CapNum
@@ -139,6 +140,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05386ec4372c6b641a7d82f4dc1255f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1895615835238489998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3617204511246222682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8ba4b374fe59a419a3b12f0b9b9b75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1681604493132458496

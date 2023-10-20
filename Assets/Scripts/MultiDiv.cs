@@ -103,8 +103,9 @@ public class MultiDiv : MonoBehaviour
         numcir.name = gameObject.GetComponent<MyNum>().myNum.ToString();
         numcir.gameObject.GetComponent<MyNum>().SetMyNumber();
 
-        
-        nbandsym.transform.parent.GetComponent<ReduceFraction>().DoReduce();
+
+        //nbandsym.transform.parent.GetComponent<ReduceFraction>().DoReduce();
+        StartCoroutine(CallDoReduce(nbandsym));
     }
 
     //分母の掛け算
@@ -115,4 +116,11 @@ public class MultiDiv : MonoBehaviour
         bottomNum.GetComponent<MyNum>().SetMyNumber();
     }
 
+    private IEnumerator CallDoReduce(GameObject a)
+    {
+        // 3秒間待つ
+        yield return new WaitForSeconds(0.1f);
+
+        a.transform.parent.GetComponent<ReduceFraction>().DoReduce();
+    }
 }

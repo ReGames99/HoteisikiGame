@@ -16,20 +16,42 @@ public class Multiply : MonoBehaviour
             //xBallタグを持つオブジェクトを配列に格納
             GameObject[] xBalls = GameObject.FindGameObjectsWithTag("xBall");
 
-            //項(xBall)に掛け算セットを追加
             foreach (GameObject obj in xBalls)
-            {          
-                InstantiateMultiplySet(obj);            
+            {
+                bool findFlag = false; //見つかっていない
+
+                //xBallを持つ分数の分子にmuldivBallがあったら掛け算
+                for (int i = 0; i < obj.transform.parent.childCount; i++)
+                {
+                    GameObject childObject = obj.transform.parent.GetChild(i).gameObject;
+
+                    //分子にmuldivBallがあるとき
+                    if (childObject.CompareTag("MulDivBall") &&
+                        childObject.GetComponent<MyNum>().motherOrChildFlag == true)
+                    {
+                        TopMultiply(childObject);
+                        findFlag = true;
+                    }
+                }
+
+                //xBallを持つ分数の分子にmuldivBallがなかったら掛け算セット用意
+
+                //if (obj.transform.parent != gameObject.transform.parent)
+                if (findFlag == false)
+                {
+                    InstantiateMultiplySet(obj);
+                }
+                            
             }
 
             //NumberBallタグを持つオブジェクトを配列に格納
             GameObject[] numberBalls = GameObject.FindGameObjectsWithTag("NumberBall");
-
-            //分母を削除した分数以外の項(Numberball)に掛け算をする
+            //分子の項(Numberball)に掛け算をする
             foreach (GameObject obj in numberBalls)
             {
                 TopMultiply(obj);
             }
+
         }
 
     }
@@ -73,13 +95,14 @@ public class Multiply : MonoBehaviour
         topNum.GetComponent<MyNum>().SetMyNumber();
 
 
-        topNum.transform.parent.GetComponent<ReduceFraction>().DoReduce();
+
+        StartCoroutine(CallDoReduce(topNum));
     }
 
 
     private IEnumerator CallDoReduce(GameObject a)
     {
-        // 3秒間待つ
+        // 秒間待つ
         yield return new WaitForSeconds(0.1f);
 
         a.transform.parent.GetComponent<ReduceFraction>().DoReduce();

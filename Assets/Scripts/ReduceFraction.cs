@@ -148,8 +148,7 @@ public class ReduceFraction : MonoBehaviour
             }
             if (childObject.CompareTag("MulDivBall") &&
                 childObject.GetComponent<MyNum>().motherOrChildFlag == true)
-            {
-                
+            {             
                 top = childObject;
                 Debug.Log(gameObject.name + "top= " + top);
             }

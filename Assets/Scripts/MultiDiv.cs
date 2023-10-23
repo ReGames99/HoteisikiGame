@@ -81,7 +81,7 @@ public class MultiDiv : MonoBehaviour
                 }      
             }
 
-            Destroy(gameObject);
+            
 
         }    
     }
@@ -114,13 +114,16 @@ public class MultiDiv : MonoBehaviour
         int multiplication = bottomNum.GetComponent<MyNum>().myNum * gameObject.GetComponent<MyNum>().myNum;
         bottomNum.name = multiplication.ToString();
         bottomNum.GetComponent<MyNum>().SetMyNumber();
+        Destroy(gameObject);
     }
 
     private IEnumerator CallDoReduce(GameObject a)
     {
+        
         // 3秒間待つ
         yield return new WaitForSeconds(0.1f);
-
+        Debug.Log("a");
         a.transform.parent.GetComponent<ReduceFraction>().DoReduce();
+        Destroy(gameObject);
     }
 }

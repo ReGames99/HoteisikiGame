@@ -429,7 +429,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6077509058981682049, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_Name
-      value: waku
+      value: left3
       objectReference: {fileID: 0}
     - target: {fileID: 6374750177647907721, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_RootOrder
@@ -552,7 +552,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6077509058981682049, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_Name
-      value: waku (2)
+      value: left1
       objectReference: {fileID: 0}
     - target: {fileID: 6374750177647907721, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_RootOrder
@@ -1575,7 +1575,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6077509058981682049, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_Name
-      value: waku (5)
+      value: right3
       objectReference: {fileID: 0}
     - target: {fileID: 6374750177647907721, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_RootOrder
@@ -2267,7 +2267,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6077509058981682049, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_Name
-      value: waku (4)
+      value: right2
       objectReference: {fileID: 0}
     - target: {fileID: 6374750177647907721, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_RootOrder
@@ -2938,7 +2938,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6077509058981682049, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_Name
-      value: waku (1)
+      value: left2
       objectReference: {fileID: 0}
     - target: {fileID: 6374750177647907721, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_RootOrder
@@ -3722,7 +3722,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6077509058981682049, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_Name
-      value: waku (3)
+      value: right1
       objectReference: {fileID: 0}
     - target: {fileID: 6374750177647907721, guid: 52610743f6f480942879c701bae7eb33, type: 3}
       propertyPath: m_RootOrder

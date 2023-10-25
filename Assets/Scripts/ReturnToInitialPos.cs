@@ -6,6 +6,9 @@ public class ReturnToInitialPos : MonoBehaviour
 {
     Vector3 initialPos;
 
+
+    GameObject collisionObject;
+
     void Start()
     {
         initialPos = transform.position;
@@ -17,11 +20,18 @@ public class ReturnToInitialPos : MonoBehaviour
         transform.position = initialPos;
     }
 
+
+
+
+
+
+
     private void OnMouseUp()
     {
         if(gameObject.CompareTag("xBall") || gameObject.CompareTag("MulDivBall"))
         {
             ReturnToInitialPosition();
         }
+
     }
 }

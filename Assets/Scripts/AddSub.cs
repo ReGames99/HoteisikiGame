@@ -44,7 +44,7 @@ public class AddSub : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (mouseEnterFlag == true)
+        if (mouseEnterFlag == true && transform.parent.childCount == 1)
         {
             mouseDownFlag = true;
             
@@ -62,22 +62,22 @@ public class AddSub : MonoBehaviour
                 if (mouseDownFlag == true)
                 {
                     AddNumber();
-                    Destroy(gameObject);
+                    Destroy(transform.parent.gameObject);
                 }
                 else
                 {
-                    gameObject.GetComponent<ReturnToInitialPos>().ReturnToInitialPosition();
+                    //gameObject.GetComponent<ReturnToInitialPos>().ReturnToInitialPosition();
                 }
 
             }
             else
             {
-                gameObject.GetComponent<ReturnToInitialPos>().ReturnToInitialPosition();
+                //gameObject.GetComponent<ReturnToInitialPos>().ReturnToInitialPosition();
             }
         }
         else
         {
-            gameObject.GetComponent<ReturnToInitialPos>().ReturnToInitialPosition();
+            //gameObject.GetComponent<ReturnToInitialPos>().ReturnToInitialPosition();
         }
     }
 

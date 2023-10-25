@@ -31,10 +31,10 @@ public class GrabParent : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (aloneFlag == true)
-        {
-            transform.parent.position = initialPos;
-        }
+        
+        
+         //transform.parent.position = initialPos;
+        
     }
 
 

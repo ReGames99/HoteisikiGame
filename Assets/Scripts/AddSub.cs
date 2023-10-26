@@ -59,7 +59,7 @@ public class AddSub : MonoBehaviour
             MojiCorrectCheck();
             if (mojicorrectFlag == true)
             {
-                if (mouseDownFlag == true)
+                if (mouseDownFlag == true && otherObject.transform.parent.childCount == 1)
                 {
                     AddNumber();
                     Destroy(transform.parent.gameObject);

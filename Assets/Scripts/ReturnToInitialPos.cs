@@ -6,8 +6,13 @@ public class ReturnToInitialPos : MonoBehaviour
 {
     Vector3 initialPos;
 
-    void Start()
+
+    GameObject collisionObject;
+
+    IEnumerator Start()
     {
+        yield return null; //ÇPÉtÉåÅ[ÉÄë“Ç¬
+
         initialPos = transform.position;
     }
 
@@ -17,11 +22,22 @@ public class ReturnToInitialPos : MonoBehaviour
         transform.position = initialPos;
     }
 
+
+
+
+
+
+
     private void OnMouseUp()
     {
         if(gameObject.CompareTag("xBall") || gameObject.CompareTag("MulDivBall"))
         {
             ReturnToInitialPosition();
         }
+        else if(gameObject.CompareTag("NumberBall") && gameObject.transform.parent.childCount != 1)
+        {
+            ReturnToInitialPosition();
+        }
+
     }
 }

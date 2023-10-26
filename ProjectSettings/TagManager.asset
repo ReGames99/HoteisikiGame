@@ -9,6 +9,8 @@ TagManager:
   - Symbol
   - Bar
   - xBall
+  - Frame
+  - FractionParent
   layers:
   - Default
   - TransparentFX

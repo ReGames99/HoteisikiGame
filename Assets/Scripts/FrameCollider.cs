@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//すいこむスクリプト！！！！
 public class FrameCollider : MonoBehaviour
 {
     [SerializeField] GameObject parentObject;
 
-    
+    bool pullableFlag = false;
 
     private void Start()
     {
@@ -20,7 +22,14 @@ public class FrameCollider : MonoBehaviour
 
     private void Update()
     {
-        
+        if(pullableFlag == true)
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                parentObject.transform.position = gameObject.transform.position;
+            }
+                
+        }
     }
 
     //枠のコライダーに単独のNumberBallが接触した時
@@ -45,11 +54,11 @@ public class FrameCollider : MonoBehaviour
             if (Mathf.Abs(collision.transform.position.x - transform.position.x) < gameObject.GetComponent<SpriteRenderer>().bounds.size.x / 2)
             {
                 Debug.Log("c");
-                if (Input.GetMouseButtonUp(0))
-                {
-                    Debug.Log("d");
-                    collision.transform.parent.position = transform.position;
-                }
+                pullableFlag = true;
+            }
+            else
+            {
+                pullableFlag = false;
             }
         }
         
@@ -60,7 +69,8 @@ public class FrameCollider : MonoBehaviour
         
         if (collision.transform.parent.childCount == 1)
         {
-            //collision.gameObject.GetComponent<ReturnToInitialPos>().pullableFlag = false;
+            pullableFlag = false;
+            parentObject = null;
             //parentObjectが離れた時
             if (collision.gameObject == parentObject)
             {

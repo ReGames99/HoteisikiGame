@@ -31,6 +31,9 @@ public class MoveFraction : MonoBehaviour
 
     public void MoveRight()
     {
+        System.Diagnostics.StackFrame caller = new System.Diagnostics.StackFrame(1);
+
+        //if (caller.GetMethod().ReflectedType)
         r2.GetComponent<FrameCollider>().parentObject.transform.position = r3.transform.position;
     }
 

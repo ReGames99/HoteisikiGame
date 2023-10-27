@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7697284535981484204}
   - component: {fileID: 8020336538625742185}
   m_Layer: 0
-  m_Name: waku
+  m_Name: wakuR
   m_TagString: Frame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentObject: {fileID: 0}
+  pullableFlag: 0
+  colliderCount: 0
 --- !u!61 &8020336538625742185
 BoxCollider2D:
   m_ObjectHideFlags: 0

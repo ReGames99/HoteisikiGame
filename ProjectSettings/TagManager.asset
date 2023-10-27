@@ -11,6 +11,8 @@ TagManager:
   - xBall
   - Frame
   - FractionParent
+  - FrameLeft
+  - FrameRight
   layers:
   - Default
   - TransparentFX

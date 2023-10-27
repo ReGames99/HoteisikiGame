@@ -34,11 +34,11 @@ public class MoveFraction : MonoBehaviour
         System.Diagnostics.StackFrame caller = new System.Diagnostics.StackFrame(1);
 
         //if (caller.GetMethod().ReflectedType)
-        r2.GetComponent<FrameCollider>().parentObject.transform.position = r3.transform.position;
+        r2.GetComponent<FrameSign>().parentObject.transform.position = r3.transform.position;
     }
 
     public void MoveLeft()
     {
-        r3.GetComponent<FrameCollider>().parentObject.transform.position = r2.transform.position;
+        r3.GetComponent<FrameSign>().parentObject.transform.position = r2.transform.position;
     }
 }

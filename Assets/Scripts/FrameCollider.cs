@@ -6,9 +6,7 @@ using UnityEngine;
 //すいこむスクリプト！！！！
 public class FrameCollider : MonoBehaviour
 {
-    MoveFraction moveFraction;
-
-    [SerializeField] public GameObject parentObject;
+    [SerializeField] GameObject parentObject;
 
     [SerializeField] bool pullableFlag = false;
 
@@ -20,8 +18,6 @@ public class FrameCollider : MonoBehaviour
         {
             parentObject.transform.position = transform.position;
         }
-
-        moveFraction = GameObject.Find("wakuManager").GetComponent<MoveFraction>();
     }
 
 
@@ -70,10 +66,6 @@ public class FrameCollider : MonoBehaviour
         if (collision.transform.parent.childCount == 1)
         {
             
-            if(colliderCount == 2)
-            {
-                moveFraction.MoveRight();
-            }
             parentObject = collision.transform.parent.gameObject;
         }
         if(colliderCount == 1)
@@ -95,15 +87,6 @@ public class FrameCollider : MonoBehaviour
         {
             Debug.Log("b");
             pullableFlag = false;
-
-            //parentObjectが離れた時
-            if (collision.transform.parent.gameObject == parentObject)
-            {
-                Debug.Log("c");
-                //となりのやつをずらしてくる
-                moveFraction.MoveLeft();
-            }
-
 
         }
         

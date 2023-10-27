@@ -8,32 +8,11 @@ public class FrameSign : MonoBehaviour
 
     [SerializeField] public GameObject parentObject;
 
-    [SerializeField] bool pullableFlag = false;
-
     [SerializeField] int colliderCount = 0;
 
     private void Start()
     {
-        if (parentObject != null)
-        {
-            parentObject.transform.position = transform.position;
-        }
-
         moveFraction = GameObject.Find("wakuManager").GetComponent<MoveFraction>();
-    }
-
-
-
-    private void Update()
-    {
-        if (pullableFlag == true)
-        {
-            if (Input.GetMouseButtonUp(0))
-            {
-                parentObject.transform.position = gameObject.transform.position;
-            }
-
-        }
     }
 
 
@@ -92,7 +71,6 @@ public class FrameSign : MonoBehaviour
         if (collision.transform.parent.childCount == 1)
         {
             Debug.Log("b");
-            pullableFlag = false;
 
             //parentObject‚ª—£‚ê‚½Žž
             if (collision.transform.parent.gameObject == parentObject)
